@@ -22,6 +22,74 @@
 
 * { box-sizing: border-box; }
 
+/* ---------- Splash ---------- */
+.splash {
+  position: fixed;
+  inset: 0;
+  background: #2E7D32;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  gap: 28px;
+  animation: splash-fade-out 0.4s ease 1.8s forwards;
+}
+
+.splash-logo {
+  width: 180px;
+  height: 180px;
+  transform-origin: center;
+  transform: scale(0.6);
+  animation: splash-logo-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.splash-minute {
+  transform-origin: 510px 265px;
+  animation: splash-hand-spin 1.6s ease-in-out 0.2s forwards;
+}
+
+.splash-name {
+  font-size: 30px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 1.2px;
+  opacity: 0;
+  animation: splash-name-in 0.7s ease-out 0.6s forwards;
+}
+
+html.splash-done .splash {
+  display: none;
+}
+
+html.no-splash .splash {
+  display: none;
+}
+
+@keyframes splash-logo-in {
+  to { transform: scale(1); }
+}
+
+@keyframes splash-hand-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes splash-name-in {
+  to { opacity: 1; }
+}
+
+@keyframes splash-fade-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-logo, .splash-minute, .splash-name { animation: none; }
+  .splash-logo { transform: scale(1); }
+  .splash-name { opacity: 1; }
+  .splash { animation: splash-fade-out 0.3s ease 1.0s forwards; }
+}
+
+
 body {
   margin: 0;
   font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

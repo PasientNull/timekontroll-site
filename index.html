@@ -10,8 +10,31 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://timekontroll.com/">
 <link rel="stylesheet" href="styles.css">
+<script>
+  // Skip splash on subsequent navigations within the same browser session.
+  if (sessionStorage.getItem('splashShown')) {
+    document.documentElement.classList.add('no-splash');
+  } else {
+    sessionStorage.setItem('splashShown', '1');
+  }
+</script>
 </head>
 <body>
+
+<div class="splash" aria-hidden="true">
+  <svg class="splash-logo" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="Timekontroll">
+    <path d="M 90 100 L 920 100 L 920 430 L 590 430 L 590 940 L 430 940 L 430 430 L 90 430 Z
+             M 162 172 L 162 358 L 502 358 L 502 868 L 518 868 L 518 358 L 858 358 L 858 172 Z"
+          fill="#fff" fill-rule="evenodd"/>
+    <line class="splash-stem-line" x1="510" y1="530" x2="510" y2="860" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+    <line x1="510" y1="265" x2="610" y2="200" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+    <line class="splash-minute" x1="510" y1="265" x2="345" y2="195" stroke="#fff" stroke-width="20" stroke-linecap="round"/>
+    <circle cx="510" cy="265" r="14" fill="#fff"/>
+  </svg>
+  <div class="splash-name">Timekontroll</div>
+</div>
+
+
 <header>
   <div class="wrap">
     <img class="logo" src="logo.png" alt="Timekontroll-logo" width="40" height="40">
@@ -76,5 +99,12 @@
 <footer>
   © 2026 Timekontroll
 </footer>
+
+<script>
+  // Hide the splash after the animation finishes.
+  setTimeout(function () {
+    document.documentElement.classList.add('splash-done');
+  }, 2200);
+</script>
 </body>
 </html>
