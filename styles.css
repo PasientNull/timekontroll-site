@@ -135,6 +135,15 @@ header a {
 .feature .icon {
   font-size: 28px;
   margin-bottom: 8px;
+  line-height: 1;
+}
+
+.feature .icon svg {
+  width: 36px;
+  height: auto;
+  vertical-align: middle;
+  display: block;
+  border-radius: 2px;
 }
 
 .feature h3 {
